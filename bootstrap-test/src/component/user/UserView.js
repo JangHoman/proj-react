@@ -50,7 +50,7 @@ const UserView = () => {
                   md={3}
                   lg={2}
                   className="mb-3"
-                  controlId="userFrm.activeYn"
+                  controlId="userFrm.delYn"
                 >
                   <Form.Label>삭제여부</Form.Label>
                   <Form.Select aria-label="삭제여부">
@@ -64,7 +64,7 @@ const UserView = () => {
                   md={6}
                   lg={8}
                   className="mb-3"
-                  controlId="userFrm.activeYn"
+                  controlId="userFrm.keyword"
                 >
                   <Form.Label>키워드검색</Form.Label>
                   <InputGroup className="mb-3">
