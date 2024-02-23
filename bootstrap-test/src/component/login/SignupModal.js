@@ -1,23 +1,27 @@
 import { useEffect, useRef, useState } from "react";
 import { Button, Col, Form, Modal, Row } from "react-bootstrap";
 
-const SignupModal = (props) => {
+const SignupModal = ({ isShow, onHide }) => {
   const [validated, setValidated] = useState(false);
   const signupFrm = useRef(null);
 
-  console.log("validated", validated);
+  const hideModal = () => {
+    setValidated(false);
+    onHide();
+  };
 
   const handleSubmit = () => {
-    if (signupFrm.current.checkValidity() === true) {
-      setValidated(true);
-    } else {
-      setValidated(true);
-    }
+    setValidated(true);
   };
 
   return (
-    <Modal {...props} aria-labelledby="contained-modal-title-vcenter" centered>
-      <Modal.Header closeButton>
+    <Modal
+      show={isShow}
+      size="md"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton onHide={hideModal}>
         <Modal.Title id="contained-modal-title-vcenter">
           회원가입 신청
         </Modal.Title>
@@ -88,7 +92,7 @@ const SignupModal = (props) => {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={props.onHide}>
+        <Button variant="secondary" onClick={hideModal}>
           Close
         </Button>
         <Button variant="primary" onClick={handleSubmit}>
